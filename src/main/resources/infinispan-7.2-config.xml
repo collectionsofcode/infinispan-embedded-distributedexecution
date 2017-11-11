@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:infinispan:config:7.2 http://www.infinispan.org/schemas/infinispan-config-7.2.xsd"
+	xmlns="urn:infinispan:config:7.2">
+
+	<jgroups>
+		<stack-file name="udp" path="jgroups-2.8-udp.xml" />
+	</jgroups>
+
+	<cache-container default-cache="default" statistics="true">
+		<transport stack="udp" cluster="COC-ISPN" node-name="coc-node-name"
+			machine="coc-machine" rack="coc-rack" site="coc-site" />
+		<jmx domain="Infinispan-7.2" />
+
+		<replicated-cache name="personCache" mode="SYNC"/>
+	</cache-container>
+
+</infinispan>
